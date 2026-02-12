@@ -10,5 +10,9 @@ while True:
     print('')
     user_input = input('Enter an option: ')
     print('')
-    
-    
+
+    if user_input == '1':
+        task_input = input('Enter your task name: ')
+        tasks.append(task_input)
+        print(f'--{task_input} successfully added to task list!')
+        print('')
