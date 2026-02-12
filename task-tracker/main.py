@@ -30,3 +30,10 @@ while True:
                 print(f'\n{task_delete} successfully removed.')
             else:
                 print(f'\n{task_delete} not found. Please try again.')
+    elif user_input == '3':
+        if not tasks:
+            print(f'Task list is empty. Please create a new task to continue.')
+            print('')
+        else:
+            print(f'Current task list:')
+            print(f'\n{tasks}')
