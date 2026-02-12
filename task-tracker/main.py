@@ -37,3 +37,7 @@ while True:
         else:
             print(f'Current task list:')
             print(f'\n{tasks}')
+    elif user_input == '4':
+        break
+    else:
+        print(f'Invalid input, please try again.')
