@@ -5,7 +5,8 @@ def display_menu():
     print(f'2- Delete Task')
     print(f'3- View Tasks')
     print(f'4- Exit Program')
-    print('')    
+    print('')
+
 
 def add_task(tasks):
     task_input = input('Enter your task name: ')
@@ -13,14 +14,15 @@ def add_task(tasks):
     print(f'--{task_input} successfully added to task list!')
     print('')
 
+
 def delete_task(tasks):
     if not tasks:
         print(f'Task list is empty. Please create a new task to continue.')
         return
-        
+
     print(f'Current task list:')
     for i, task in enumerate(tasks, start=1):
-        print(f'{i}. {task}')
+        print(f'    {i}. {task}')
 
     print('')
     user_input = input('Enter the task number to delete: ').strip()
@@ -37,16 +39,19 @@ def delete_task(tasks):
     except ValueError:
         print('\nPlease enter a valid task number.\n')
 
+
 def view_tasks(tasks):
     if not tasks:
         print(f'Task list is empty. Please create a new task to continue.')
-        print('')
-    else:
-        print(f'Current task list:')
-        print(f'\n{tasks}')
+        return
+
+    print(f'Current task list:')
+    for i, task in enumerate(tasks, start=1):
+        print(f'    {i}. {task}')
+
 
 def main():
-    tasks = []  
+    tasks = []
 
     while True:
         display_menu()
@@ -63,6 +68,7 @@ def main():
             break
         else:
             print(f'Invalid input, please try again.')
+
 
 if __name__ == "__main__":
     main()
