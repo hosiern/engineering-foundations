@@ -23,7 +23,7 @@ def add_task(tasks):
 
 
 def delete_task(tasks):
-    if not ensure_task_exists(tasks):
+    if not ensure_tasks_exist(tasks):
         return
 
     view_tasks(tasks)
@@ -49,7 +49,7 @@ def delete_task(tasks):
 
 
 def view_tasks(tasks):
-    if not ensure_task_exists(tasks):
+    if not ensure_tasks_exist(tasks):
         return
 
     print('Current task list:')
@@ -59,7 +59,7 @@ def view_tasks(tasks):
     print()
 
 
-def ensure_task_exists(tasks):
+def ensure_tasks_exist(tasks):
     if not tasks:
         print('Task list is empty. Please create a new task to continue.')
         print()
