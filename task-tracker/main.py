@@ -1,6 +1,4 @@
-tasks = []
-
-while True:
+def display_menu():
     print(f'\n *Task Tracker Main Menu*')
     print('')
     print(f'1- Create New Task')
@@ -11,6 +9,10 @@ while True:
     user_input = input('Enter an option: ')
     print('')
 
+tasks = []
+
+while True:
+    
     if user_input == '1':
         task_input = input('Enter your task name: ')
         tasks.append(task_input)
