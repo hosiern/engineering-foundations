@@ -82,6 +82,8 @@ def main():
         elif user_input == '3':
             view_tasks(tasks)
         elif user_input == '4':
+            print('Exiting Task Tracker.')
+            print()
             break
         else:
             print('Invalid input, please try again.')
