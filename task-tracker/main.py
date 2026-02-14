@@ -8,43 +8,51 @@ def display_menu():
     print('')
     user_input = input('Enter an option: ')
     print('')
+    return user_input
 
-def add_task():
-    if user_input == '1':
-        task_input = input('Enter your task name: ')
-        tasks.append(task_input)
-        print(f'--{task_input} successfully added to task list!')
-        print('')
+def add_task(tasks):
+    task_input = input('Enter your task name: ')
+    tasks.append(task_input)
+    print(f'--{task_input} successfully added to task list!')
+    print('')
 
 def delete_task(tasks):
-    if user_input == '2':
-        if not tasks:
-            print(f'Task list is empty. Please create a new task to continue.')
-            print('')
-        else:
-            print(f'Current task list:')
-            print(tasks)
-            print('')
-            task_delete = input('Which task would you like to delete?: ')
-            if task_delete in tasks:
-                tasks.remove(task_delete)
-                print(f'\n{task_delete} successfully removed.')
-            else:
-                print(f'\n{task_delete} not found. Please try again.')
-
-tasks = []
-
-while True:
-    
-
-    elif user_input == '3':
-        if not tasks:
-            print(f'Task list is empty. Please create a new task to continue.')
-            print('')
-        else:
-            print(f'Current task list:')
-            print(f'\n{tasks}')
-    elif user_input == '4':
-        break
+    if not tasks:
+        print(f'Task list is empty. Please create a new task to continue.')
+        print('')
     else:
-        print(f'Invalid input, please try again.')
+        print(f'Current task list:')
+        print(tasks)
+        print('')
+        task_delete = input('Which task would you like to delete?: ')
+        if task_delete in tasks:
+            tasks.remove(task_delete)
+            print(f'\n{task_delete} successfully removed.')
+        else:
+            print(f'\n{task_delete} not found. Please try again.')
+
+def view_tasks(tasks):
+    if not tasks:
+        print(f'Task list is empty. Please create a new task to continue.')
+        print('')
+    else:
+        print(f'Current task list:')
+        print(f'\n{tasks}')
+
+def main():
+    tasks = []
+    while True:
+        display_menu()
+        if user_input == '1':
+            add_task()
+        elif user_input == '2':
+            delete_task()
+        elif user_input == '3':
+            view_tasks()
+        elif user_input == '4':
+            break
+        else:
+            print(f'Invalid input, please try again.')
+
+if __name__ == "__main__":
+    main()
