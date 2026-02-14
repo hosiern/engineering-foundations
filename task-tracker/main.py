@@ -40,15 +40,17 @@ def view_tasks(tasks):
         print(f'\n{tasks}')
 
 def main():
-    tasks = []
+    tasks = []  
+      
     while True:
-        display_menu()
+        user_input = display_menu()
+
         if user_input == '1':
-            add_task()
+            add_task(tasks)
         elif user_input == '2':
-            delete_task()
+            delete_task(tasks)
         elif user_input == '3':
-            view_tasks()
+            view_tasks(tasks)
         elif user_input == '4':
             break
         else:
