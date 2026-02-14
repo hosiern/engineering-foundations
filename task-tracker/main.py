@@ -23,9 +23,10 @@ def add_task(tasks):
 
 
 def delete_task(tasks):
-    view_tasks(tasks)
+    if not ensure_task_exists(tasks):
+        return
 
-    print()
+    view_tasks(tasks)
     user_input = input('Enter the task number to delete: ').strip()
 
     try:
@@ -48,14 +49,22 @@ def delete_task(tasks):
 
 
 def view_tasks(tasks):
-    if not tasks:
-        print('Task list is empty. Please create a new task to continue.')
-        print()
+    if not ensure_task_exists(tasks):
         return
 
     print('Current task list:')
     for i, task in enumerate(tasks, start=1):
         print(f'    {i}. {task}')
+
+    print()
+
+
+def ensure_task_exists(tasks):
+    if not tasks:
+        print('Task list is empty. Please create a new task to continue.')
+        print()
+        return False
+    return True
 
 
 def main():
