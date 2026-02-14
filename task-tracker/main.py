@@ -16,13 +16,7 @@ def add_task(tasks):
 
 
 def delete_task(tasks):
-    if not tasks:
-        print(f'Task list is empty. Please create a new task to continue.')
-        return
-
-    print(f'Current task list:')
-    for i, task in enumerate(tasks, start=1):
-        print(f'    {i}. {task}')
+    view_tasks(tasks)
 
     print('')
     user_input = input('Enter the task number to delete: ').strip()
