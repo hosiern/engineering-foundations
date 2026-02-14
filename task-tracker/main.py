@@ -16,12 +16,8 @@ def add_task():
         print(f'--{task_input} successfully added to task list!')
         print('')
 
-tasks = []
-
-while True:
-    
-    
-    elif user_input == '2':
+def delete_task(tasks):
+    if user_input == '2':
         if not tasks:
             print(f'Task list is empty. Please create a new task to continue.')
             print('')
@@ -35,6 +31,12 @@ while True:
                 print(f'\n{task_delete} successfully removed.')
             else:
                 print(f'\n{task_delete} not found. Please try again.')
+
+tasks = []
+
+while True:
+    
+
     elif user_input == '3':
         if not tasks:
             print(f'Task list is empty. Please create a new task to continue.')
