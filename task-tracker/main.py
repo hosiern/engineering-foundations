@@ -32,7 +32,7 @@ def delete_task(tasks):
             removed = tasks.pop(index - 1)
             print(f'\n{removed} successully removed.\n')
         else:
-            print('\nInvalid task number.\n')
+            print('\nInvalid task number, please try again.\n')
 
     except ValueError:
         print('\nPlease enter a valid task number.\n')
