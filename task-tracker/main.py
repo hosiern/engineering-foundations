@@ -5,10 +5,7 @@ def display_menu():
     print(f'2- Delete Task')
     print(f'3- View Tasks')
     print(f'4- Exit Program')
-    print('')
-    user_input = input('Enter an option: ')
-    print('')
-    return user_input
+    print('')    
 
 def add_task(tasks):
     task_input = input('Enter your task name: ')
@@ -41,9 +38,11 @@ def view_tasks(tasks):
 
 def main():
     tasks = []  
-      
+
     while True:
-        user_input = display_menu()
+        display_menu()
+        user_input = input('Enter an option: ').strip()
+        print('')
 
         if user_input == '1':
             add_task(tasks)
