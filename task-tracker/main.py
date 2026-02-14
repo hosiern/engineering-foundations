@@ -16,17 +16,26 @@ def add_task(tasks):
 def delete_task(tasks):
     if not tasks:
         print(f'Task list is empty. Please create a new task to continue.')
-        print('')
-    else:
-        print(f'Current task list:')
-        print(tasks)
-        print('')
-        task_delete = input('Which task would you like to delete?: ')
-        if task_delete in tasks:
-            tasks.remove(task_delete)
-            print(f'\n{task_delete} successfully removed.')
+        return
+        
+    print(f'Current task list:')
+    for i, task in enumerate(tasks, start=1):
+        print(f'{i}. {task}')
+
+    print('')
+    user_input = input('Enter the task number to delete: ').strip()
+
+    try:
+        index = int(user_input)
+
+        if 1 <= index <= len(tasks):
+            removed = tasks.pop(index - 1)
+            print(f'\n{removed} successully removed.\n')
         else:
-            print(f'\n{task_delete} not found. Please try again.')
+            print('\nInvalid task number.\n')
+
+    except ValueError:
+        print('\nPlease enter a valid task number.\n')
 
 def view_tasks(tasks):
     if not tasks:
