@@ -9,7 +9,10 @@ def display_menu():
 
 
 def add_task(tasks):
-    task_input = input('Enter your task name: ')
+    task_input = input('Enter your task name: ').strip()
+    if not task_input:
+        print('\nTask name cannot be empty! Please try again.\n')
+        return
     tasks.append(task_input)
     print(f'--{task_input} successfully added to task list!')
     print('')
