@@ -1,27 +1,31 @@
 def display_menu():
-    print(f'\n *Task Tracker Main Menu*')
-    print('')
-    print(f'1- Create New Task')
-    print(f'2- Delete Task')
-    print(f'3- View Tasks')
-    print(f'4- Exit Program')
-    print('')
+    print()
+    print('*Task Tracker Main Menu*')
+    print()
+    print('1- Create New Task')
+    print('2- Delete Task')
+    print('3- View Tasks')
+    print('4- Exit Program')
+    print()
 
 
 def add_task(tasks):
     task_input = input('Enter your task name: ').strip()
     if not task_input:
-        print('\nTask name cannot be empty! Please try again.\n')
+        print()
+        print('Task name cannot be empty! Please try again.')
+        print()
         return
     tasks.append(task_input)
+    print()
     print(f'--{task_input} successfully added to task list!')
-    print('')
+    print()
 
 
 def delete_task(tasks):
     view_tasks(tasks)
 
-    print('')
+    print()
     user_input = input('Enter the task number to delete: ').strip()
 
     try:
@@ -29,20 +33,27 @@ def delete_task(tasks):
 
         if 1 <= index <= len(tasks):
             removed = tasks.pop(index - 1)
-            print(f'\n{removed} successully removed.\n')
+            print()
+            print(f'{removed} successfully removed.')
+            print()
         else:
-            print('\nInvalid task number, please try again.\n')
+            print()
+            print('Invalid task number, please try again.')
+            print()
 
     except ValueError:
-        print('\nPlease enter a valid task number.\n')
+        print()
+        print('Please enter a valid task number.')
+        print()
 
 
 def view_tasks(tasks):
     if not tasks:
-        print(f'Task list is empty. Please create a new task to continue.')
+        print('Task list is empty. Please create a new task to continue.')
+        print()
         return
 
-    print(f'Current task list:')
+    print('Current task list:')
     for i, task in enumerate(tasks, start=1):
         print(f'    {i}. {task}')
 
@@ -53,7 +64,7 @@ def main():
     while True:
         display_menu()
         user_input = input('Enter an option: ').strip()
-        print('')
+        print()
 
         if user_input == '1':
             add_task(tasks)
@@ -64,7 +75,7 @@ def main():
         elif user_input == '4':
             break
         else:
-            print(f'Invalid input, please try again.')
+            print('Invalid input, please try again.')
 
 
 if __name__ == "__main__":
