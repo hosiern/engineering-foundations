@@ -9,15 +9,18 @@ def display_menu():
     user_input = input('Enter an option: ')
     print('')
 
-tasks = []
-
-while True:
-    
+def add_task():
     if user_input == '1':
         task_input = input('Enter your task name: ')
         tasks.append(task_input)
         print(f'--{task_input} successfully added to task list!')
         print('')
+
+tasks = []
+
+while True:
+    
+    
     elif user_input == '2':
         if not tasks:
             print(f'Task list is empty. Please create a new task to continue.')
