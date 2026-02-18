@@ -56,6 +56,33 @@ def delete_task(tasks):
         print()
 
 
+def mark_task_done(tasks):
+    if not ensure_tasks_exist(tasks):
+        return
+
+    view_tasks(tasks)
+    user_input = input('Enter task number to mark complete: ').strip()
+
+    try:
+        index = int(user_input)
+
+        if 1 <= index <= len(tasks):
+            tasks[index - 1]['done'] = True
+            save_tasks(tasks)
+            print()
+            print(f'{tasks[index-1]['description']} marked complete.')
+            print()
+        else:
+            print()
+            print('Invalid task number, please try again.')
+            print()
+
+    except ValueError:
+        print()
+        print('Please enter a valid task number.')
+        print()
+
+
 def view_tasks(tasks):
     if not ensure_tasks_exist(tasks):
         return
