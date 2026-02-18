@@ -73,8 +73,27 @@ def ensure_tasks_exist(tasks):
     return True
 
 
+def load_tasks():
+    if not TASKS_FILE.exists():
+        return []
+
+    try:
+        with TASKS_FILE.open('r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        if isinstance(data, list):
+            return data
+        else:
+            return []
+
+    except (json.JSONDecodeError, OSError):
+        print('Warning: tasks file is corrupted or unreadable. Creating new tasks file.')
+        print()
+        return []
+
+
 def main():
-    tasks = []
+    tasks = load_tasks()
 
     while True:
         display_menu()
