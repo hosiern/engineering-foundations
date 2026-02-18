@@ -64,9 +64,6 @@ def mark_task_done(tasks):
 
 
 def view_tasks(tasks):
-    if not ensure_tasks_exist(tasks):
-        return
-
     print('Current task list:')
     for i, task in enumerate(tasks, start=1):
         status = '✓' if task['done'] else '✗'
@@ -78,7 +75,6 @@ def view_tasks(tasks):
 def ensure_tasks_exist(tasks):
     if not tasks:
         print('Task list is empty. Please create a new task to continue.')
-        print()
         return False
     return True
 
@@ -168,7 +164,8 @@ def main():
         elif user_input == '2':
             delete_task(tasks)
         elif user_input == '3':
-            view_tasks(tasks)
+            if ensure_tasks_exist(tasks):
+                view_tasks(tasks)
         elif user_input == '4':
             mark_task_done(tasks)
         elif user_input == '5':
