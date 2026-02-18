@@ -99,7 +99,7 @@ def load_tasks():
             data = json.load(f)
 
         if isinstance(data, list):
-            return data
+            return normalize_tasks(data)
         else:
             return []
 
