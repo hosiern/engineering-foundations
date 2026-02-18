@@ -75,6 +75,21 @@ def ensure_tasks_exist(tasks):
     return True
 
 
+def normalize_tasks(data):
+    normalized = []
+
+    for item in data:
+        if isinstance(item, str):
+            normalized.append({'description': item, 'done': False})
+        elif isinstance(item, dict) and 'description' in item:
+            normalized.append({
+                'description': str(item['description']).strip(),
+                'done': bool(item.get('done', False))
+            })
+
+    return normalized
+
+
 def load_tasks():
     if not TASKS_FILE.exists():
         return []
