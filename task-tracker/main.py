@@ -22,7 +22,7 @@ def add_task(tasks):
         print('Task name cannot be empty! Please try again.')
         print()
         return
-    tasks.append(task_input)
+    tasks.append({'description': task_input, 'done': False})
     save_tasks(tasks)
     print()
     print(f'--{task_input} successfully added to task list!')
