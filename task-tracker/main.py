@@ -43,7 +43,7 @@ def delete_task(tasks):
             removed = tasks.pop(index - 1)
             save_tasks(tasks)
             print()
-            print(f'{removed} successfully removed.')
+            print(f'{removed["description"]} successfully removed.')
             print()
         else:
             print()
