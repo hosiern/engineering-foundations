@@ -35,26 +35,12 @@ def delete_task(tasks):
         return
 
     view_tasks(tasks)
-    user_input = input('Enter the task number to delete: ').strip()
-
-    try:
-        index = int(user_input)
-
-        if 1 <= index <= len(tasks):
-            removed = tasks.pop(index - 1)
-            save_tasks(tasks)
-            print()
-            print(f'{removed["description"]} successfully removed.')
-            print()
-        else:
-            print()
-            print('Invalid task number, please try again.')
-            print()
-
-    except ValueError:
-        print()
-        print('Please enter a valid task number.')
-        print()
+    index = prompt_index(tasks)
+    removed = tasks.pop(index)
+    save_tasks(tasks)
+    print()
+    print(f"{removed['description']} successfully removed.")
+    print()
 
 
 def mark_task_done(tasks):
@@ -62,26 +48,13 @@ def mark_task_done(tasks):
         return
 
     view_tasks(tasks)
-    user_input = input('Enter task number to mark complete: ').strip()
+    index = prompt_index(tasks)
 
-    try:
-        index = int(user_input)
-
-        if 1 <= index <= len(tasks):
-            tasks[index - 1]['done'] = True
-            save_tasks(tasks)
-            print()
-            print(f'{tasks[index-1]['description']} marked complete.')
-            print()
-        else:
-            print()
-            print('Invalid task number, please try again.')
-            print()
-
-    except ValueError:
-        print()
-        print('Please enter a valid task number.')
-        print()
+    tasks[index]['done'] = True
+    save_tasks(tasks)
+    print()
+    print(f"{tasks[index]['description']} marked complete.")
+    print()
 
 
 def view_tasks(tasks):
@@ -91,7 +64,7 @@ def view_tasks(tasks):
     print('Current task list:')
     for i, task in enumerate(tasks, start=1):
         status = '✓' if task['done'] else '✗'
-        print(f'    {i}. [{status}] {task['description']}')
+        print(f"    {i}. [{status}] {task['description']}")
 
     print()
 
@@ -117,6 +90,34 @@ def normalize_tasks(data):
             })
 
     return normalized
+
+
+def prompt_index(tasks):
+    while True:
+        raw_input = input('Enter a valid task number: ').strip()
+
+        if not raw_input:
+            print()
+            print('No input provided. Enter a valid task number.')
+            print()
+            continue
+
+        if not raw_input.isdigit():
+            print()
+            print('Invalid input. Enter a valid task number.')
+            print()
+            continue
+
+        valid_input = int(raw_input)
+
+        if valid_input < 1 or valid_input > len(tasks):
+            print()
+            print(
+                f'Invalid task number. Enter a valid task number between 1 and {len(tasks)}.')
+            print()
+            continue
+
+        return valid_input - 1
 
 
 def load_tasks():
