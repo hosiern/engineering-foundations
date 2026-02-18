@@ -50,6 +50,12 @@ def mark_task_done(tasks):
     view_tasks(tasks)
     index = prompt_index(tasks, 'Enter the task number to mark complete: ')
 
+    if tasks[index]['done']:
+        print()
+        print(
+            f"{tasks[index]['description']} is already marked complete, try again.")
+        return
+
     tasks[index]['done'] = True
     save_tasks(tasks)
     print()
@@ -94,21 +100,21 @@ def normalize_tasks(data):
 
 def prompt_index(tasks, prompt_text):
     while True:
-        raw_input = input(prompt_text).strip()
+        raw = input(prompt_text).strip()
 
-        if not raw_input:
+        if not raw:
             print()
             print('No input provided. Enter a valid task number.')
             print()
             continue
 
-        if not raw_input.isdigit():
+        if not raw.isdigit():
             print()
             print('Invalid input. Enter a valid task number.')
             print()
             continue
 
-        valid_input = int(raw_input)
+        valid_input = int(raw)
 
         if valid_input < 1 or valid_input > len(tasks):
             print()
