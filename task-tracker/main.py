@@ -23,6 +23,7 @@ def add_task(tasks):
         print()
         return
     tasks.append(task_input)
+    save_tasks(tasks)
     print()
     print(f'--{task_input} successfully added to task list!')
     print()
@@ -40,6 +41,7 @@ def delete_task(tasks):
 
         if 1 <= index <= len(tasks):
             removed = tasks.pop(index - 1)
+            save_tasks(tasks)
             print()
             print(f'{removed} successfully removed.')
             print()
@@ -90,6 +92,16 @@ def load_tasks():
         print('Warning: tasks file is corrupted or unreadable. Creating new tasks file.')
         print()
         return []
+
+
+def save_tasks(tasks):
+    try:
+        with TASKS_FILE.open('w', encoding='utf-8') as f:
+            json.dump(tasks, f, indent=2)
+
+    except OSError:
+        print('Error: could not save tasks.')
+        print()
 
 
 def main():
