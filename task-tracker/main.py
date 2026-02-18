@@ -62,7 +62,8 @@ def view_tasks(tasks):
 
     print('Current task list:')
     for i, task in enumerate(tasks, start=1):
-        print(f'    {i}. {task}')
+        status = '✓' if task['done'] else '✗'
+        print(f'    {i}. [{status}] {task['description']}')
 
     print()
 
