@@ -1,3 +1,9 @@
+import json
+from pathlib import Path
+
+TASKS_FILE = Path(__file__).with_name('tasks.json')
+
+
 def display_menu():
     print()
     print('*Task Tracker Main Menu*')
