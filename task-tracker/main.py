@@ -11,7 +11,8 @@ def display_menu():
     print('1- Create New Task')
     print('2- Delete Task')
     print('3- View Tasks')
-    print('4- Exit Program')
+    print('4- Mark Task Complete')
+    print('5- Exit Program')
     print()
 
 
@@ -162,6 +163,8 @@ def main():
         elif user_input == '3':
             view_tasks(tasks)
         elif user_input == '4':
+            mark_task_done(tasks)
+        elif user_input == '5':
             print('Exiting Task Tracker.')
             print()
             break
