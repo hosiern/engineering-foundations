@@ -35,7 +35,7 @@ def delete_task(tasks):
         return
 
     view_tasks(tasks)
-    index = prompt_index(tasks)
+    index = prompt_index(tasks, 'Enter the task number to delete: ')
     removed = tasks.pop(index)
     save_tasks(tasks)
     print()
@@ -48,7 +48,7 @@ def mark_task_done(tasks):
         return
 
     view_tasks(tasks)
-    index = prompt_index(tasks)
+    index = prompt_index(tasks, 'Enter the task number to mark complete: ')
 
     tasks[index]['done'] = True
     save_tasks(tasks)
@@ -92,9 +92,9 @@ def normalize_tasks(data):
     return normalized
 
 
-def prompt_index(tasks):
+def prompt_index(tasks, prompt_text):
     while True:
-        raw_input = input('Enter a valid task number: ').strip()
+        raw_input = input(prompt_text).strip()
 
         if not raw_input:
             print()
