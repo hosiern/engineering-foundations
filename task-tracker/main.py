@@ -63,12 +63,15 @@ def mark_task_done(tasks):
     print()
 
 
+def format_task(task, index) -> str:
+    status = '✓' if task['done'] else '✗'
+    return f"    {index}. [{status}] {task['description']}"
+
+
 def view_tasks(tasks):
     print('Current task list:')
     for i, task in enumerate(tasks, start=1):
-        status = '✓' if task['done'] else '✗'
-        print(f"    {i}. [{status}] {task['description']}")
-
+        print(format_task(task, i))
     print()
 
 
